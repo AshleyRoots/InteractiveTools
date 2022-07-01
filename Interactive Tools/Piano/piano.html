@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphics Testing</title>
+</head>
+
+<body>
+
+    <div class="piano">
+        <ul class="set">
+
+            <!-- C -->
+            <li class="white e">
+                <p>C</p>
+                <input type="button" value="C" onclick="playC()">
+                <audio id="C" src="/Audio/C.wav"></audio>
+
+            </li>
+            <!-- C# -->
+            <li class="black ds">
+                <p>C#</p>
+                <p>Db</p>
+                <input type="button" value="Db" onclick="playDb()">
+                <audio id="Db" src="/Audio/Db.wav"></audio>
+            </li>
+            <!-- D -->
+            <li class="white d">
+                <p>D</p>
+                <input type="button" value="D" onclick="playD()">
+                <audio id="D" src="/Audio/D.wav"></audio>
+            </li>
+            <!-- D# -->
+            <li class="black cs">
+                <p>D#</p>
+                <p>Eb</p>
+                <input type="button" value="Eb" onclick="playEb()">
+                <audio id="Eb" src="/Audio/Eb.wav"></audio>
+            </li>
+            <!-- E -->
+            <li class="white c" style="margin-right: .3em;">
+                <p>E</p>
+                <input type="button" value="E" onclick="playE()">
+                <audio id="E" src="/Audio/E.wav"></audio>
+            </li>
+            <!-- F -->
+            <li class="white b">
+                <p>F</p>
+                <input type="button" value="F" onclick="playF()">
+                <audio id="F" src="/Audio/F.wav"></audio>
+            </li>
+            <!-- F# -->
+            <li class="black as">
+                <p>F#</p>
+                <p>Gb</p>
+                <input type="button" value="Gb" onclick="playGb()">
+                <audio id="Gb" src="/Audio/Gb.wav"></audio>
+            </li>
+            <!-- G -->
+            <li class="white a">
+                <p>G</p>
+                <input type="button" value="G" onclick="playG()">
+                <audio id="G" src="/Audio/G.wav"></audio>
+            </li>
+            <!-- G# -->
+            <li class="black gs">
+                <p>G#</p>
+                <p>Ab</p>
+                <input type="button" value="Ab" onclick="playAb()">
+                <audio id="Ab" src="/Audio/Ab.wav"></audio>
+            </li>
+            <!-- A -->
+            <li class="white g">
+                <p>A</p>
+                <input type="button" value="A" onclick="playA()">
+                <audio id="A" src="/Audio/A.wav"></audio>
+            </li>
+            <!-- A# -->
+            <li class="black fs">
+                <p>A#</p>
+                <p>Bb</p>
+                <input type="button" value="Bb" onclick="playBb()">
+                <audio id="Bb" src="/Audio/Bb.wav"></audio>
+            </li>
+            <!-- B -->
+            <li class="white f">
+                <p>B</p>
+                <input type="button" value="B" onclick="playB()">
+                <audio id="B" src="/Audio/B.wav"></audio>
+            </li>
+        </ul>
+    </div>
+
+    <style>
+        .piano ul {
+            height: 18em;
+            width: max-content;
+            margin: 1em auto;
+            padding: 1em;
+            position: relative;
+            border: 1px solid #160801;
+            border-radius: 1em;
+            background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .white input {
+            opacity: 0;
+            width: 4.8em;
+            height: 19.2em;
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 0;
+        }
+
+        .black input {
+            opacity: 0;
+            width: 2.6em;
+            height: 9.5em;
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 0;
+        }
+
+        .piano li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: relative;
+            float: left;
+            text-align: center;
+        }
+
+        .piano ul .white {
+            height: 16em;
+            width: 4em;
+            z-index: 1;
+            border-left: 1px solid #bbb;
+            border-bottom: 1px solid #bbb;
+            border-radius: 0 0 5px 5px;
+            box-shadow: -1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to bottom, #eee 0%, #fff 100%);
+        }
+
+        .piano ul .white:active {
+            border-top: 1px solid #777;
+            border-left: 1px solid #999;
+            border-bottom: 1px solid #999;
+            box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to bottom, #fff 0%, #e9e9e9 100%);
+        }
+
+        .piano .black {
+            height: 8em;
+            width: 2.2em;
+            margin: 0 0 0 -1em;
+            z-index: 2;
+            border: 1px solid #000;
+            border-radius: 0 0 3px 3px;
+            box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #222 0%, #555 100%);
+        }
+
+        .piano .black:active {
+            box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #444 0%, #222 100%);
+        }
+
+        .piano .a,
+        .piano .g,
+        .piano .f,
+        .piano .d,
+        .piano .c {
+            margin: 0 0 0 -1em;
+        }
+
+        .piano .e {
+            margin-left: .2em;
+        }
+
+        .piano ul li:first-child {
+            border-radius: 5px 0 5px 5px;
+        }
+
+        .piano ul li:last-child {
+            border-radius: 0 5px 5px 5px;
+        }
+
+        .piano .white p {
+            position: relative;
+            top: 200px;
+            text-align: center;
+            padding-right: 20px;
+        }
+
+        .piano .black p {
+            position: relative;
+            color: white;
+            padding: 5px;
+            text-align: center;
+        }
+
+        #ekey {
+            background-color: red;
+        }
+    </style>
+
+    <script>
+
+
+        function playA() {
+            var audio = document.getElementById("A");
+            audio.play();
+        }
+        function playB() {
+            var audio = document.getElementById("B");
+            audio.play();
+        }
+        function playC() {
+            var audio = document.getElementById("C");
+            audio.play();
+        }
+        function playD() {
+            var audio = document.getElementById("D");
+            audio.play();
+        }
+        function playE() {
+            var audio = document.getElementById("E");
+            audio.play();
+        }
+        function playF() {
+            var audio = document.getElementById("F");
+            audio.play();
+        }
+        function playG() {
+            var audio = document.getElementById("G");
+            audio.play();
+        }
+        function playDb() {
+            var audio = document.getElementById("Db");
+            audio.play();
+        }
+        function playEb() {
+            var audio = document.getElementById("Eb");
+            audio.play();
+        }
+        function playGb() {
+            var audio = document.getElementById("Gb");
+            audio.play();
+        }
+        function playAb() {
+            var audio = document.getElementById("Ab");
+            audio.play();
+        }
+        function playBb() {
+            var audio = document.getElementById("Bb");
+            audio.play();
+        }
+    </script>
+
+
+</body>
+
+</html>
